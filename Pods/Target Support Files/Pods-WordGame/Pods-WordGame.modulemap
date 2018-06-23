@@ -1,0 +1,6 @@
+module Pods_WordGame {
+  umbrella header "Pods-WordGame-umbrella.h"
+
+  export *
+  module * { export * }
+}
