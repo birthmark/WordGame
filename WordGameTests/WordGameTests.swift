@@ -2,7 +2,7 @@
 //  WordGameTests.swift
 //  WordGameTests
 //
-//  Created by xiaog on 2018/6/22.
+//  Created by xiaog on 2018/6/23.
 //  Copyright © 2018年 xiaog. All rights reserved.
 //
 
