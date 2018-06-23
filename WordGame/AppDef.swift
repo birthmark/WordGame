@@ -12,4 +12,6 @@ import UIKit
 let kScreenW = UIScreen.main.bounds.size.width
 let kScreenH = UIScreen.main.bounds.size.height
 
-let configUrl = "https://s3.amazonaws.com/duolingo-data/s3/js2/find_challenges.txt"
+let kConfigUrl = "https://s3.amazonaws.com/duolingo-data/s3/js2/find_challenges.txt"
+
+let kViewTagBase = 1000

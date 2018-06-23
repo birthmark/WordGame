@@ -86,8 +86,8 @@ class LetterView: UIView {
     }
     
     func location(columns:Int) -> String {
-        let posX = self.tag % columns;
-        let posY = self.tag / columns;
+        let posX = (self.tag-kViewTagBase) % columns;
+        let posY = (self.tag-kViewTagBase) / columns;
         
         return "\(posX),\(posY)"
     }

@@ -91,7 +91,7 @@ class GameScene: UIViewController, LetterSelectionDelegate {
         loadingActivity?.startAnimating()
         DispatchQueue.global().async {
             
-            if let gameConfig = try? NSString.init(contentsOf: URL.init(string:configUrl )!, encoding: String.Encoding.utf8.rawValue) {
+            if let gameConfig = try? NSString.init(contentsOf: URL.init(string:kConfigUrl )!, encoding: String.Encoding.utf8.rawValue) {
                 DispatchQueue.main.async {
                     self.loadingActivity?.stopAnimating()
                     GameConfig.shared.loadGame(config: gameConfig as String)
