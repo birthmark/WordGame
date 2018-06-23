@@ -107,6 +107,7 @@ class GameScene: UIViewController, LetterSelectionDelegate {
     }
     
     func selectWordLocation(location: String) -> Bool {
+        NSLog("selected word location: \(location)")
         let item = GameConfig.shared.gameItem()
         if (item.confirm(result: location)) {
             if (item.isGameOver()) {

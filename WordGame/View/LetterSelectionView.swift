@@ -73,6 +73,7 @@ class LetterSelectionView: UIView {
         if let letterView = viewForPoint(point: point) {
             letterView.isSelected = true
             firstLetterView = letterView
+            arrLetterViews.append(firstLetterView!)
         }
     }
     
@@ -80,7 +81,8 @@ class LetterSelectionView: UIView {
         let touch = touches.first!
         let point = touch.location(in: self)
         if (self.bounds.contains(point)) {
-            if let letterView = viewForPoint(point: point) {
+            if let letterView:LetterView = viewForPoint(point: point) {
+//                NSLog("value:\(letterView.value)")
                 if (firstLetterView == nil) {
                     firstLetterView = letterView;
                 } else {
@@ -98,12 +100,22 @@ class LetterSelectionView: UIView {
         for item in arrLetterViews {
             item.isSelected = false
         }
+        
+        for item in arrLetterViews {
+            item.isSelected = false
+        }
+        arrLetterViews.removeAll()
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         for item in arrLetterViews {
             item.isSelected = false
         }
+        
+        for item in arrLetterViews {
+            item.isSelected = false
+        }
+        arrLetterViews.removeAll()
     }
     
     private func calculateLocation() {
@@ -127,10 +139,10 @@ class LetterSelectionView: UIView {
     }
     
     private func calculateSelectedItems() {
-        let startRow = (firstLetterView?.tag)! / columns!
-        let startColumn = (firstLetterView?.tag)! % columns!
-        let endRow = (lastLetterView?.tag)! / columns!
-        let endColumn = (lastLetterView?.tag)! % columns!
+        let startRow = ((firstLetterView?.tag)!-kViewTagBase) / columns!
+        let startColumn = ((firstLetterView?.tag)!-kViewTagBase) % columns!
+        let endRow = ((lastLetterView?.tag)!-kViewTagBase) / columns!
+        let endColumn = ((lastLetterView?.tag)!-kViewTagBase) % columns!
         
         let (direction, count) = calculateDirectionAndItemCount(startRow: startRow, startColumn: startColumn, endRow: endRow, endColumn: endColumn)
         
@@ -176,9 +188,13 @@ class LetterSelectionView: UIView {
             
             if (row >= 0 && row < rows! && column >= 0 && column < columns!) {
                 let tag = row * columns! + column + kViewTagBase
+//                NSLog("tag:\(tag)")
+                
                 let view:LetterView = viewWithTag(tag) as! LetterView
-                arrLetterViews.append(view)
-                view.isSelected = true
+                if (!arrLetterViews.contains(view)) {
+                    arrLetterViews.append(view)
+                    view.isSelected = true
+                }
             }
         }
     }
