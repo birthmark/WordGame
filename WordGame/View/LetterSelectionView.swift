@@ -19,7 +19,7 @@ enum Direction {
     case rightdown
 }
 
-protocol LetterSelectionDelegate {
+protocol LetterSelectionDelegate : NSObjectProtocol {
     func selectWordLocation(location: String) -> Bool
 }
 
@@ -28,7 +28,7 @@ class LetterSelectionView: UIView {
     var arrLetterViews:Array<LetterView> = Array.init()
     var rows:Int?
     var columns:Int?
-    var delegate:LetterSelectionDelegate?
+    weak var delegate:LetterSelectionDelegate?
     var direction:Direction = .right
     
     var firstLetterView: LetterView?
