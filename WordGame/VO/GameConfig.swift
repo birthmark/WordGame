@@ -31,7 +31,9 @@ class GameConfig: NSObject {
     
     func nextGame() -> GameItem {
         current = (current + 1 ) % (arrGameScenes.count);
-        return arrGameScenes[current];
+        let item = arrGameScenes[current];
+        item.reset()
+        return item;
     }
     
     func gameItem() -> GameItem{
